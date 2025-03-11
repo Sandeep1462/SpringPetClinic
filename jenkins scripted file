@@ -1,0 +1,23 @@
+node {
+    
+    stage('checkout'){
+        
+        git branch: "main" , url: "https://github.com/Sandeep1462/SpringPetClinic.git"
+    }
+    
+    stage('build'){
+        
+        withMaven(maven: "M3"){
+            
+            sh "mvn compile"
+        }
+    }
+    
+    stage('test'){
+        
+        withMaven(maven: "M3"){
+            
+            sh "mvn test"
+        }
+    }
+}
